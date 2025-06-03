@@ -1,0 +1,1043 @@
+/* ==========================================================================
+   Estilos Globais & Reset
+   ========================================================================== */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura/altura */
+}
+
+html {
+    scroll-behavior: smooth; /* Rolagem suave para âncoras */
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* Exemplo: Usando Poppins. Certifique-se de importar no HTML */
+    line-height: 1.6;
+    color: var(--cor-texto-principal);
+    background-color: var(--cor-fundo-secao-clara);
+    -webkit-font-smoothing: antialiased; /* Suavização de fontes para Webkit */
+    text-rendering: optimizeLegibility; /* Otimiza a renderização do texto */
+}
+
+/* Variáveis de Cores e Estilos Customizados */
+:root {
+    --cor-principal-neurofocus: #1E3A8A; /* Azul Petróleo Escuro */
+    --cor-secundaria-neurofocus: #10B981; /* Verde Suave */
+    --gradiente-inicio: #007bff; /* Azul Vibrante para o início do gradiente */
+    --gradiente-fim: #00bcd4;   /* Ciano para o fim do gradiente */
+
+    --cor-fundo-secao-clara: #f8f9fa; /* Fundo muito claro para seções */
+    --cor-fundo-secao-media: #f0f4f8; /* Fundo um pouco mais presente para seções */
+    --cor-fundo-branco: #ffffff;
+
+    --cor-texto-principal: #333333;
+    --cor-texto-secundario: #555;
+    --cor-texto-terciario: #888; /* Para detalhes menores como centavos, período */
+
+    --cor-borda-suave: #e0e0e0;
+    --sombra-card-suave: rgba(0, 0, 0, 0.08);
+    --sombra-card-hover: rgba(0, 0, 0, 0.12);
+    --sombra-card-destaque: rgba(0, 0, 0, 0.15);
+}
+
+/* ==========================================================================
+   Estilos de Tipografia e Títulos
+   ========================================================================== */
+/* Estilo para o Título de Destaque Principal (usado em Benefícios, Depoimentos, Planos) */
+.titulo-destaque-principal {
+    font-size: 3.5em; /* Ajuste o tamanho da fonte */
+    font-weight: 700; /* Negrito para o gradiente se destacar */
+    background: linear-gradient(to right, var(--gradiente-inicio), var(--gradiente-fim));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent; /* Fallback */
+    margin-bottom: 30px;
+    text-align: center;
+    transition: filter 0.3s ease;
+}
+
+.titulo-destaque-principal:hover {
+    filter: brightness(1.1); /* Um leve brilho ao passar o mouse */
+}
+
+/* ==========================================================================
+   Estilos de Componentes Reutilizáveis (Botões, Cards, etc.)
+   ========================================================================== */
+
+/* Botões Genéricos (se houver, além dos do Hero) */
+.btn-custom {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-custom-primary {
+    background-color: var(--cor-principal-neurofocus);
+    color: var(--cor-fundo-branco);
+    border: 2px solid var(--cor-principal-neurofocus);
+}
+
+.btn-custom-primary:hover {
+    /* Usando color-mix para escurecer, que é nativo CSS moderno */
+    background-color: color-mix(in srgb, var(--cor-principal-neurofocus) 90%, black);
+    border-color: color-mix(in srgb, var(--cor-principal-neurofocus) 90%, black);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-custom-outline {
+    background-color: transparent;
+    color: var(--cor-principal-neurofocus);
+    border: 2px solid var(--cor-principal-neurofocus);
+}
+
+.btn-custom-outline:hover {
+    background-color: var(--cor-principal-neurofocus);
+    color: var(--cor-fundo-branco);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Os botões .btn-primary e .btn-outline-primary do Bootstrap podem ser sobrepostos aqui */
+.btn-primary {
+    background-color: var(--cor-principal-neurofocus);
+    border-color: var(--cor-principal-neurofocus);
+    color: var(--cor-fundo-branco);
+    transition: all 0.3s ease; /* Adicionar transição */
+}
+
+.btn-primary:hover {
+    background-color: color-mix(in srgb, var(--cor-principal-neurofocus) 90%, black); /* Escurece a cor */
+    border-color: color-mix(in srgb, var(--cor-principal-neurofocus) 90%, black);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-outline-primary {
+    color: var(--cor-principal-neurofocus);
+    border-color: var(--cor-principal-neurofocus);
+    transition: all 0.3s ease; /* Adicionar transição */
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--cor-principal-neurofocus);
+    color: var(--cor-fundo-branco);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================================================
+   Header e Navegação (NavBar)
+   ========================================================================== */
+header {
+    background-color: var(--cor-fundo-branco);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    transition: all 0.3s ease-in-out;
+    z-index: 1030;
+}
+
+/* Opcional: Adicionar classe para navbar ao rolar (ex: via JS) */
+/* .header-scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+} */
+
+.navbar-brand.logo {
+    text-decoration: none;
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: var(--cor-principal-neurofocus);
+    transition: color 0.3s ease;
+}
+
+.navbar-brand.logo:hover {
+    color: var(--gradiente-inicio);
+}
+
+.navbar-toggler {
+    border: none;
+    outline: none;
+    padding: 0;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2830, 58, 138, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar-nav .nav-item {
+    margin-left: 20px;
+}
+
+.navbar-nav .nav-link {
+    color: var(--cor-texto-principal);
+    font-weight: 600;
+    font-size: 1.05em;
+    padding: 8px 0;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--cor-secundaria-neurofocus);
+    transform: translateY(-2px);
+}
+
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--cor-secundaria-neurofocus);
+    transition: width 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-item .btn-login {
+    background: linear-gradient(to right, var(--gradiente-inicio), var(--gradiente-fim));
+    color: var(--cor-fundo-branco);
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-weight: 700;
+    margin-left: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    border: none;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.nav-item .btn-login:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    opacity: 0.9;
+    color: var(--cor-fundo-branco);
+}
+
+
+/* ==========================================================================
+   Seção Hero (Cabeçalho principal)
+   ========================================================================== */
+.hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--cor-principal-neurofocus) 0%, #1e5799 100%);
+    color: var(--cor-fundo-branco);
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    padding: 0 15px;
+}
+
+.hero-title {
+    font-size: 4.8em;
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--cor-fundo-branco);
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-bottom: 25px;
+}
+
+.hero-description {
+    font-size: 1.5em;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 700px;
+    margin-bottom: 40px;
+}
+
+.hero-buttons {
+    margin-top: 40px;
+}
+
+.btn-primary-custom,
+.btn-outline-custom {
+    display: inline-block;
+    padding: 18px 40px;
+    margin: 0 15px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.2em;
+    transition: all 0.4s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary-custom {
+    background: linear-gradient(to right, var(--gradiente-inicio), var(--gradiente-fim));
+    color: var(--cor-fundo-branco);
+    border: none;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.btn-primary-custom::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transition: width 0.4s ease, height 0.4s ease, top 0.4s ease, left 0.4s ease;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.btn-primary-custom:hover::after {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+}
+
+.btn-primary-custom:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.btn-outline-custom {
+    background-color: transparent;
+    color: var(--cor-fundo-branco);
+    border: 2px solid var(--cor-fundo-branco);
+}
+
+.btn-outline-custom:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: var(--cor-fundo-branco);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+
+/* ==========================================================================
+   Seção de Benefícios
+   ========================================================================== */
+.beneficios {
+    padding: 80px 0;
+    background-color: var(--cor-fundo-secao-clara);
+}
+
+.beneficio-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+    background-color: var(--cor-fundo-branco);
+    border: 1px solid var(--cor-borda-suave);
+    border-radius: 12px;
+    box-shadow: 0 6px 18px var(--sombra-card-suave);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.beneficio-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px var(--sombra-card-hover);
+}
+
+.beneficio-icon {
+    font-size: 3.5em;
+    color: var(--cor-secundaria-neurofocus);
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
+
+.beneficio-item:hover .beneficio-icon {
+    color: var(--gradiente-inicio);
+}
+
+.beneficio-item h3 {
+    font-size: 1.9em;
+    font-weight: 700;
+    color: var(--cor-principal-neurofocus);
+    margin-bottom: 15px;
+}
+
+.beneficio-item p {
+    font-size: 1.05em;
+    color: var(--cor-texto-secundario);
+    line-height: 1.7;
+}
+
+
+/* ==========================================================================
+   Seção de Estatísticas (Números grandes)
+   ========================================================================== */
+.estatisticas {
+    padding: 60px 0;
+    background-color: var(--cor-fundo-secao-clara);
+}
+
+.statistic-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--cor-fundo-branco);
+    padding: 30px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px var(--sombra-card-suave);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.statistic-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px var(--sombra-card-hover);
+}
+
+.statistic-number {
+    font-size: 3.5em;
+    font-weight: 700;
+    color: var(--cor-principal-neurofocus);
+    margin-bottom: 10px;
+    line-height: 1;
+}
+
+.statistic-description {
+    font-size: 1.1em;
+    color: var(--cor-texto-secundario);
+    line-height: 1.5;
+    max-width: 250px;
+}
+
+
+/* ==========================================================================
+   Seção de Depoimentos (Carrossel)
+   ========================================================================== */
+.depoimento {
+    padding: 60px 0;
+    background-color: var(--cor-fundo-secao-media);
+}
+
+.depoimento-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: var(--cor-fundo-branco);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px var(--sombra-card-suave);
+    margin: 0 auto;
+    max-width: 800px;
+    min-height: 320px;
+}
+
+.avatar-inicial {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 120px;
+    font-size: 2.5em;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--cor-fundo-branco);
+    border: 4px solid var(--cor-secundaria-neurofocus);
+    border-radius: 50%; /* Faz o avatar circular */
+    background-color: var(--cor-principal-neurofocus); /* Cor de fundo para as iniciais */
+    margin-bottom: 25px; /* Espaço abaixo do avatar */
+}
+
+.testimonial-text {
+    font-size: 1.3em;
+    color: var(--cor-texto-principal);
+    line-height: 1.8;
+    margin-bottom: 25px;
+    font-style: italic;
+}
+
+.testimonial-author {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--cor-principal-neurofocus);
+    margin-top: 15px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+    background: none;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 1;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(0.5); /* Torna os ícones do Bootstrap mais visíveis */
+}
+
+
+/* ==========================================================================
+   Seção de Estatísticas Resumidas (abaixo dos depoimentos)
+   ========================================================================== */
+.estatisticas-resumidas {
+    background-color: var(--cor-fundo-secao-clara);
+    padding: 60px 0;
+}
+
+.statistic-number-resumido {
+    font-size: 2.8em;
+    font-weight: bold;
+    color: var(--gradiente-inicio);
+    margin-bottom: 5px;
+    line-height: 1.2;
+}
+
+.statistic-text-resumido {
+    font-size: 1.1em;
+    color: var(--cor-texto-secundario);
+    line-height: 1.5;
+}
+
+
+/* ==========================================================================
+   Seção de Planos
+   ========================================================================== */
+.planos-section {
+    background-color: var(--cor-fundo-secao-media);
+    padding: 80px 0;
+}
+
+.plan-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--cor-fundo-branco);
+    border: 1px solid var(--cor-borda-suave);
+    border-radius: 12px;
+    padding: 40px 25px;
+    box-shadow: 0 5px 15px var(--sombra-card-suave);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 450px; /* Garante altura uniforme se não usar flexbox parent */
+}
+
+.plan-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px var(--sombra-card-hover);
+}
+
+.plan-title {
+    font-size: 2.2em;
+    font-weight: bold;
+    color: var(--cor-principal-neurofocus);
+    margin-bottom: 20px;
+}
+
+.plan-price {
+    font-size: 3em;
+    font-weight: bold;
+    color: var(--gradiente-inicio);
+    margin-bottom: 25px;
+    line-height: 1;
+}
+
+.plan-price .small-cents {
+    font-size: 0.6em;
+    vertical-align: super;
+    font-weight: normal;
+    color: var(--cor-texto-terciario);
+}
+
+.plan-price .period {
+    font-size: 0.4em;
+    font-weight: normal;
+    color: var(--cor-texto-terciario);
+}
+
+.plan-features {
+    font-size: 1.1em;
+    color: var(--cor-texto-secundario);
+    margin-bottom: 30px;
+    padding: 0;
+    list-style: none; /* Remove bullet points padrão */
+}
+
+.plan-features li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 25px;
+    text-align: left;
+    width: 100%;
+}
+
+.plan-features li::before {
+    content: '\2713'; /* Caractere de checkmark (✓) */
+    color: var(--cor-secundaria-neurofocus);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.featured-plan {
+    border: 3px solid var(--cor-secundaria-neurofocus);
+    transform: scale(1.05); /* Destaca o card */
+    box-shadow: 0 8px 20px var(--sombra-card-destaque);
+}
+
+.featured-plan .plan-title {
+    color: var(--cor-secundaria-neurofocus);
+}
+
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.site-footer {
+    background-color: var(--cor-principal-neurofocus); /* Fundo azul petróleo escuro para o footer */
+    color: var(--cor-fundo-branco); /* Texto branco padrão para o footer */
+    padding: 60px 0 30px; /* Mais padding no topo e no fundo */
+    box-shadow: inset 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra interna sutil */
+    position: relative; /* Para possíveis efeitos futuros */
+}
+
+/* Estilo para o Logo no Footer */
+.footer-logo {
+    text-decoration: none;
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: var(--cor-fundo-branco); /* Logo branco */
+    transition: color 0.3s ease;
+    display: inline-block; /* Para garantir que o hover funcione bem */
+}
+
+.footer-logo:hover {
+    color: var(--cor-secundaria-neurofocus); /* Cor de destaque no hover */
+}
+
+.footer-description {
+    font-size: 0.95em;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8); /* Texto um pouco transparente */
+    max-width: 300px; /* Limita a largura para melhor leitura */
+}
+
+/* Estilo para os Títulos das Colunas */
+.footer-heading {
+    font-size: 1.3em;
+    font-weight: 700;
+    color: var(--cor-secundaria-neurofocus); /* Cor verde para os títulos */
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1); /* Linha abaixo do título */
+    padding-bottom: 10px;
+    display: inline-block; /* Para que a borda não ocupe 100% */
+}
+
+/* Estilo para os Links do Footer */
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 0.95em;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-left: 10px; /* Espaço para o pseudo-elemento */
+}
+
+.footer-links a::before { /* Pequeno ponto ou seta antes do link */
+    content: '\2022'; /* Ponto (bullet) */
+    /* content: '\203A'; // Para uma seta ">" */
+    color: var(--cor-secundaria-neurofocus);
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: transform 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: var(--cor-fundo-branco); /* Branco puro no hover */
+    padding-left: 15px; /* Move o texto um pouco para a direita */
+}
+
+.footer-links a:hover::before {
+    transform: translateX(5px); /* Move o ponto/seta junto com o texto */
+}
+
+
+/* Estilo para os Ícones de Redes Sociais */
+.social-icons a {
+    display: inline-flex; /* Para centralizar o ícone */
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente */
+    color: var(--cor-fundo-branco);
+    border-radius: 50%; /* Ícones circulares */
+    font-size: 1.2em;
+    margin: 0 8px; /* Espaço entre os ícones */
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: var(--cor-secundaria-neurofocus); /* Cor de destaque no hover */
+    transform: translateY(-3px) scale(1.1); /* Levanta e cresce um pouco */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para informações de contato */
+.contact-info {
+    font-size: 0.95em;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.contact-info a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: var(--cor-fundo-branco);
+    text-decoration: underline;
+}
+
+/* Divisor visual */
+.footer-divider {
+    border-color: rgba(255, 255, 255, 0.2); /* Linha divisória mais clara */
+}
+
+/* Estilo para o Texto de Copyright */
+.copyright-text {
+    font-size: 0.85em;
+    color: rgba(255, 255, 255, 0.6); /* Texto de copyright mais suave */
+    margin-top: 20px; /* Margem superior para separar do divisor */
+}
+
+
+/* ==========================================================================
+   Animações
+   ========================================================================== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+    animation: fadeIn 1s ease-out forwards;
+    opacity: 0; /* Inicia invisível */
+    /* Você pode adicionar delays específicos no HTML se quiser um efeito cascata:
+        style="animation-delay: 0.2s;"
+    */
+}
+
+
+/* ==========================================================================
+   Responsividade (Media Queries)
+   ========================================================================== */
+
+/* Telas de tablet e menores (max-width: 992px é o breakpoint 'lg' do Bootstrap) */
+@media (max-width: 992px) {
+    /* Header e Navegação */
+    .navbar-brand.logo {
+        font-size: 2rem; /* Ajuste do logo */
+    }
+
+    /* Seção Hero */
+    .hero-title {
+        font-size: 3.5em; /* Ajuste para tablets */
+    }
+    .hero-description {
+        font-size: 1.3em;
+    }
+    .btn-primary-custom,
+    .btn-outline-custom {
+        padding: 15px 30px;
+        font-size: 1.1em;
+    }
+
+    /* Títulos gerais */
+    .titulo-destaque-principal {
+        font-size: 2.8em;
+    }
+
+    /* Seções (ajustes menores para tablets) */
+    .beneficio-item,
+    .statistic-item,
+    .depoimento-card,
+    .plan-card {
+        padding: 30px 20px;
+        min-height: auto; /* Remove altura mínima em telas menores para ajuste de conteúdo */
+    }
+
+    .plan-card {
+        margin-bottom: 20px; /* Adiciona espaço entre cards de plano em tablets */
+    }
+}
+
+/* Telas de celular (max-width: 768px é o breakpoint 'md' do Bootstrap) */
+@media (max-width: 768px) {
+    /* Header e Navegação */
+    header {
+        background-color: var(--cor-fundo-branco); /* Fundo sólido para mobile */
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .navbar-brand.logo {
+        font-size: 1.8rem; /* Reduzir tamanho do logo em mobile */
+    }
+    .navbar-collapse {
+        border-top: 1px solid var(--cor-borda-suave);
+        padding-top: 10px;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--cor-fundo-branco);
+    }
+    .navbar-nav {
+        flex-direction: column;
+        width: 100%;
+        padding-bottom: 10px;
+    }
+    .navbar-nav .nav-item {
+        margin-left: 0;
+        text-align: center;
+        border-bottom: 1px solid var(--cor-borda-suave);
+    }
+    .navbar-nav .nav-item:last-child {
+        border-bottom: none;
+    }
+    .navbar-nav .nav-link {
+        padding: 12px 15px;
+        font-size: 1.1em;
+    }
+    .navbar-nav .nav-link::after {
+        display: none; /* Remove sublinhado no hover para mobile */
+    }
+    .nav-item .btn-login {
+        display: block;
+        width: calc(100% - 30px);
+        margin: 15px auto 10px auto;
+        padding: 12px 20px;
+    }
+
+    /* Seção Hero */
+    .hero-section {
+        min-height: 75vh;
+        padding: 60px 0;
+    }
+    .hero-title {
+        font-size: 2.8em;
+        margin-bottom: 20px;
+    }
+    .hero-description {
+        font-size: 1.1em;
+        margin-bottom: 30px;
+    }
+    .btn-primary-custom,
+    .btn-outline-custom {
+        display: block;
+        margin: 10px auto;
+        width: 90%;
+        max-width: 300px;
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+
+    /* Títulos gerais */
+    .titulo-destaque-principal {
+        font-size: 2.2em;
+        margin-bottom: 20px;
+    }
+
+    /* Benefícios */
+    .beneficios {
+        padding: 50px 0;
+    }
+    .beneficio-item {
+        padding: 20px;
+    }
+    .beneficio-icon {
+        font-size: 3em;
+        margin-bottom: 15px;
+    }
+    .beneficio-item h3 {
+        font-size: 1.6em;
+    }
+    .beneficio-item p {
+        font-size: 1em;
+    }
+
+    /* Estatísticas (números grandes) */
+    .statistic-number {
+        font-size: 2.8em;
+    }
+    .statistic-description {
+        font-size: 1em;
+    }
+
+    /* Depoimentos */
+    .depoimento-card {
+        padding: 25px;
+        min-height: auto;
+    }
+    .avatar-inicial {
+        width: 100px;
+        height: 100px;
+        font-size: 2em;
+    }
+    .testimonial-text {
+        font-size: 1.1em;
+    }
+    .testimonial-author {
+        font-size: 1em;
+    }
+
+    /* Estatísticas Resumidas (abaixo depoimentos) */
+    .estatisticas-resumidas {
+        padding: 40px 0;
+    }
+    .statistic-number-resumido {
+        font-size: 2em;
+    }
+    .statistic-text-resumido {
+        font-size: 0.95em;
+    }
+
+    /* Planos */
+    .planos-section {
+        padding: 50px 0;
+    }
+    .plan-card {
+        padding: 30px 15px;
+        min-height: auto;
+    }
+    .plan-title {
+        font-size: 1.8em;
+    }
+    .plan-price {
+        font-size: 2.5em;
+    }
+    .plan-features {
+        font-size: 1em;
+    }
+    .featured-plan {
+        transform: none; /* Remove a escala no destaque em telas pequenas */
+    }
+}
+
+/* Telas muito pequenas (max-width: 576px é o breakpoint 'sm' do Bootstrap) */
+@media (max-width: 576px) {
+    /* Hero Section */
+    .hero-title {
+        font-size: 2.2em; /* Menor ainda para celulares pequenos */
+    }
+    .hero-description {
+        font-size: 0.95em;
+    }
+
+    /* Títulos gerais */
+    .titulo-destaque-principal {
+        font-size: 1.8em;
+    }
+
+    /* Responsividade do Footer (já foi incluída e está ok) */
+    .site-footer {
+        padding: 40px 0 20px;
+    }
+
+    .col-md-4, .col-md-2 {
+        text-align: center !important; /* Centraliza o texto para mobile */
+    }
+
+    .footer-heading {
+        margin-bottom: 15px;
+        border-bottom: none; /* Remove a borda para mobile */
+        padding-bottom: 0;
+        display: block; /* Ocupa a largura total novamente */
+    }
+
+    .footer-links,
+    .social-icons,
+    .contact-info {
+        margin-bottom: 30px; /* Mais espaço entre as seções em mobile */
+    }
+
+    .social-icons {
+        justify-content: center; /* Centraliza os ícones em mobile */
+        display: flex; /* Garante que o justify-content funcione */
+    }
+
+    .footer-description {
+        margin-left: auto;
+        margin-right: auto; /* Centraliza o parágrafo em mobile */
+    }
+
+    .footer-logo {
+        font-size: 2rem;
+    }
+    .footer-heading {
+        font-size: 1.2em;
+    }
+    .footer-description,
+    .footer-links a,
+    .contact-info,
+    .copyright-text {
+        font-size: 0.8em;
+    }
+    .social-icons a {
+        width: 35px;
+        height: 35px;
+        font-size: 1em;
+    }
+}
